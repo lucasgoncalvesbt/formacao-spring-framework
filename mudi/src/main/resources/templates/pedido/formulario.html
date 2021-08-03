@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base::head('Novo Pedido')}"></head>
+<body>
+	<div th:replace="~{base::logo}"></div>
+	<div class="container">
+		<div th:replace="~{base::titulo('Novo Pedido')}"></div>
+
+		<div class="card mt-3">
+			<form th:object="${requisicaoNovoPedido}" class="card-body"
+				th:action="@{/pedido/novo}" method="POST">
+				<div class="form-group">
+					<label for="nomeProduto">Produto</label> <input
+						th:field="*{nomeProduto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Preencha o nome do produto" />
+					<small>Informe o nome do produto</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">Erros
+						no nome do produto</div>
+				</div>
+				<div class="form-group">
+					<label for="urlProduto">URL</label> <input th:field="*{urlProduto}"
+						th:errorclass="is-invalid" class="form-control"
+						placeholder="URL do produto" /> <small>Informe a URL do
+						produto</small>
+					<div class="invalid-feedback" th:errors="*{urlProduto}">Erros
+						na url do produto</div>
+				</div>
+				<div class="form-group">
+					<label for="urlImagem">IMAGEM</label> <input
+						th:field="*{urlImagem}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Url da imagem deste produto" />
+					<small>Informe uma URL deste produto</small>
+					<div class="invalid-feedback" th:errors="*{urlImagem}">Erros
+						na url da imagem</div>
+				</div>
+				<div class="form-group">
+					<label for="descricao">Descrição</label>
+					<textarea th:field="*{descricao}" class="form-control"
+						placeholder="Preencha uma breve descri��o">
+                        </textarea>
+					<div th:errors="*{descricao}">Erros na descrição</div>
+				</div>
+
+				<button class="btn btn-primary" type="submit">Cadastrar</button>
+			</form>
+		</div>
+
+	</div>
+</html>
